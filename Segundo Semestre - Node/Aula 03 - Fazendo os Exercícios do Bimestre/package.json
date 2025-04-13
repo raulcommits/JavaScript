@@ -1,0 +1,9 @@
+{
+  "name": "aula03",
+  "version": "1.0.0",
+  "description": "\"Arquivo para realização de atividades da matéria (PWII) com Node.js\"",
+  "main": "index.js",
+  "author": "Raul Tomaz",
+  "license": "MIT",
+  "type": "module"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "aula01",
+  "version": "1.0.0",
+  "description": "Primeiro Projeto em Node",
+  "main": "index.js",
+  "author": "Raul Tomaz",
+  "license": "MIT"
+}

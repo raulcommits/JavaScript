@@ -1,0 +1,9 @@
+{
+  "name": "aula04",
+  "version": "1.0.0",
+  "description": "\"Aprendendo sobre Express\"",
+  "main": "index.js",
+  "author": "Raul Tomaz",
+  "license": "MIT",
+  "type": "module"
+}

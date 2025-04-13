@@ -1,0 +1,9 @@
+{
+  "name": "aula02",
+  "version": "1.0.0",
+  "description": "Aprendendo sobre o módulo FS",
+  "main": "index.js",
+  "author": "Raul Tomaz",
+  "license": "MIT",
+  "type": "module"
+}
