@@ -1,0 +1,45 @@
+body {
+    background-color: cornsilk;
+}
+/*div {
+    background-color: rgb(47, 66, 107);
+}*/
+
+.div-pai {
+    display: flex;
+    justify-content: space-evenly;
+    background-color:  slategray;
+}
+.div1 {
+    background-color: rgb(133, 287, 93);
+    padding: 10px;
+}
+.div2 {
+    background-color: rgb(138, 166, 173);
+    padding: 10px;
+}
+
+.div-pai2 {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    top: 70px;
+    background-color:  slategray;
+}
+.div3 {
+    background-color: darkmagenta;
+    padding: 5px;
+}
+.div4 {
+    background-color: gold;
+    padding: 5px;
+}
+img {
+    width: 25%;
+}
+
+.div5 {
+    background-color: slategray;
+    position: relative;
+    top: 120px;
+}
