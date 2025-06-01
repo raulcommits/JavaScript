@@ -4,8 +4,8 @@ const autorLivro = new EntitySchema({
     name: "AutorLivro",
     tableName: "autorLivro",
     columns: {
-        idAutor: {primary: true, type: Number, nullable: false},
-        idLivro: {primary: true, type: Number, nullable: false},
+        autorId: {primary: true, type: Number, nullable: false},
+        livroId: {primary: true, type: Number, nullable: false},
         createdAt: {type: "datetime", nullable: false, default: () => "CURRENT_TIMESTAMP"},
         deletedAt: {type: "datetime", nullable: true}
     },

@@ -18,24 +18,30 @@ route.get("/", async (request, response) => {
 
 route.get("/:foundNome", async (request, response) => {
     const {foundNome} = request.params;
-    const foundAutorLivro = await repositorioAutorLivro.findBy({idAutor: Like (`%${foundNome}`)});
-    return response.status(200).send({"response": foundAutorLivro});
+    const foundAutorlivro = await repositorioAutorLivro.findBy({idAutor: Like (`%${foundNome}`)});
+    return response.status(200).send({"response": foundAutorlivro});
+});
+
+route.get("/:foundNome", async (request, response) => {
+    const {foundNome} = request.params;
+    const foundautorLivro = await repositorioAutorLivro.findBy({idLivro: Like (`%${foundNome}`)});
+    return response.status(200).send({"response": foundautorLivro});
 });
 
 route.post("/", async (request, response) => {
-    const {idAutor, idLivro, autor_id, livro_id} = request.body;
+    const {autorId, livroId} = request.body;
 
-    if(isNaN(idAutor)) {
+    if(isNaN(autorId)) {
         return response.status(400).send({"response": "O id do autor deve ser numérico."});
     }
 
-    if(isNaN(idLivro)) {
+    if(isNaN(livroId)) {
         return response.status(400).send({"response": "O id do livro deve ser numérico."});
     }
 
     try {
         const autor = await repositorioAutor.findOneBy({
-            id: autor_id,
+            id: autorId,
             deletedAt: IsNull()
         });
         if(!autor) {
@@ -43,14 +49,14 @@ route.post("/", async (request, response) => {
         }
 
         const livro = await repositorioLivro.findOneBy({
-            id: livro_id,
+            id: livroId,
             deletedAt: IsNull()
         });
         if(!livro) {
             return response.status(400).send({"response": "Este livro não foi encontrado"});
         }
 
-        const novoAutorLivro = repositorioAutorLivro.create({idAutor, idLivro, autor, livro});
+        const novoAutorLivro = repositorioAutorLivro.create({autor, livro});
         await repositorioAutorLivro.save(novoAutorLivro);
         return response.status(201).send({"response": "Autor do livro cadastrado com sucesso"});
     } catch(err) {
@@ -59,51 +65,19 @@ route.post("/", async (request, response) => {
     
 });
 
-route.put("/:idAutor", async (request, response) => {
-    const {idLivro, autor_id, livro_id} = request.body;
-    const {idAutor} = request.params;
+route.delete("/", async (request, response) => {
+    const {autorId, livroId} = request.query;
 
-    if(isNaN(idAutor)) {
-        return response.status(400).send({"response": "O id do autor deve ser numérico."});
+    if(isNaN(autorId)) {
+        return response.status(400).send({"response": "O id precisa ser numérico"});
     }
 
-    if(isNaN(idLivro)) {
-        return response.status(400).send({"response": "O id do livro deve ser numérico."});
-    }
-
-    try {
-        const autor = await repositorioAutor.findOneBy({
-            id: autor_id,
-            deletedAt: IsNull()
-        });
-        if(!autor) {
-            return response.status(400).send({"response": "Este autor não foi encontrado."});
-        }
-
-        const livro = await repositorioLivro.findOneBy({
-            id: livro_id,
-            deletedAt: IsNull()
-        });
-        if(!livro) {
-            return response.status(400).send({"response": "Este livro não foi encontrado"});
-        }
-        await repositorioAutorLivro.update({idAutor}, {idLivro, autor, livro});
-        return response.status(200).send({"response": "Autor do livro atualizado com sucesso."});
-    } catch(err) {
-        return response.status(500).send({"response": err});
-    }
-
-});
-
-route.delete("/:idAutor", async (request, response) => {
-    const {idAutor} = request.params;
-
-    if(isNaN(idAutor)) {
+    if(isNaN(livroId)) {
         return response.status(400).send({"response": "O id precisa ser numérico"});
     }
 
     try {
-        await repositorioAutorLivro.update({idAutor}, {deletedAt: () => "CURRENT_TIMESTAMP"});
+        await repositorioAutorLivro.delete({autorId, livroId});
         return response.status(200).send({"response": "Autor do livro deletado com sucesso."});
     } catch(err) {
         return response.status(500).send({"response": err});

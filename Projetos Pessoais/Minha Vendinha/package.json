@@ -1,0 +1,13 @@
+{
+  "name": "minha_venda_ponto_com",
+  "version": "1.0.0",
+  "description": "\"Uma API em Node para treinar MVC com tabelas sem Migrations\"",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "author": "Raul Thomays",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
