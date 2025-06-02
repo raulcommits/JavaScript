@@ -2,16 +2,17 @@ import express, { request, response } from "express";
 import usuario from "../entities/user.js";
 import { AppDataSource } from "../database/data-source.js";
 import {Like, IsNull} from "typeorm";
+import { authenticate } from "../utils/jwt.js";
 
 const route = express.Router();
 const repositorioUsuario = AppDataSource.getRepository(usuario);
 
-route.get("/", async (request, response) => {
+route.get("/", authenticate, async (request, response) => {
     const usuarios = await repositorioUsuario.findBy({deletedAt: IsNull()});
     return response.status(200).send({"response": usuarios});
 });
 
-route.get("/:foundNome", async (request, response) => {
+route.get("/:foundNome", authenticate, async (request, response) => {
      const {foundNome} = request.params;
      const foundUser = await repositorioUsuario.findBy({name: Like (`%${foundNome}`)});
      return response.status(200).send({"response": foundUser});
