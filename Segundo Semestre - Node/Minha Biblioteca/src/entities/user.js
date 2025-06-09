@@ -14,4 +14,4 @@ const user = new EntitySchema({
     }
 });
 
-export default user;
+export default user;    
