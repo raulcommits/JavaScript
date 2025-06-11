@@ -4,6 +4,7 @@ import { AppDataSource } from "../database/data-source.js";
 import {IsNull} from "typeorm";
 import { generateToken } from "../utils/jwt.js";
 import { GerandoNovaSenha } from "../utils/login.js";
+import { sendMail } from "../helpers/nodemailer.js";
 
 const route = express.Router();
 const repositorioUsuario = AppDataSource.getRepository(usuario);
@@ -44,6 +45,8 @@ route.put("/reset", async (request, response) => {
     const novaSenha = GerandoNovaSenha();
 
     await repositorioUsuario.update({email}, {password: novaSenha});
+
+    sendMail(novaSenha, user.email);
 
     return response.status(200).send({"response": "Senha enviada para o email."});
 });
