@@ -1,0 +1,26 @@
+.botoes {
+    width: 25%;
+    background-color: #f0f0f0;
+    font-size: 40px;
+    box-shadow: 0px 0px 1px #000;
+    text-align: center;
+    cursor: pointer;
+    border-color: #bbb;
+    height: 10vh;
+    align-content: center;
+    justify-self: center;
+}
+
+.duplo {
+    width: 50%;
+}
+
+.triplo {
+    width: 75%;
+    background-color: blue;
+}
+
+.operaciones {
+    color: #fff;
+    background-color: darksalmon;
+}

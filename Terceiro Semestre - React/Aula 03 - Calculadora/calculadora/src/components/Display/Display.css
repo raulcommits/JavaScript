@@ -1,0 +1,16 @@
+.display {
+    flex: 1;
+    padding: 20;
+    justify-content: center;
+    align-items: flex-end;
+    height: 15vh;
+    box-shadow: #000;
+    background-color: aqua;
+}
+
+.displayValue {
+    font-size: 60px;
+    color: #fff;
+    text-align: center;
+    padding-top: 25px;
+}
